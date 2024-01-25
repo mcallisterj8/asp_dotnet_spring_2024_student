@@ -16,7 +16,7 @@ export class VehicleComponent implements OnInit {
 
   public vehicle: Vehicle | null = null;
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.vehicle = this.vehicleService.getCurVehicle();
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Vehicle } from '../models/vehicle';
+import { VEHICLES } from '../mock-db/vehicles';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,14 @@ export class VehicleService {
 
   public getCurVehicle(): Vehicle{
     return this.curVehicleSubject.value;
+  }
+
+  // public getVehicles(): Vehicle[] {
+  //   return VEHICLES;
+  // }
+
+  public getVehicles(): Observable<Vehicle[]> {    
+    return of(VEHICLES);
   }
 
 }
