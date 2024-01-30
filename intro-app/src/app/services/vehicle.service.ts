@@ -34,4 +34,11 @@ export class VehicleService {
     return of(VEHICLES);
   }
 
+  public getVehicle(id: string): Observable<Vehicle | null> {
+    const vehicleId = parseInt(id);
+    const vehicle: Vehicle | undefined = VEHICLES.find(vehicle => vehicle.id == vehicleId);
+   
+    return ( vehicle ? of(vehicle) : of(null) );
+  }
+
 }
