@@ -94,5 +94,12 @@ namespace ServerLecture.Controllers
 
             return Ok("Database seeded");
         }
+    
+        // Get all producs
+        [HttpGet("")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts() {
+            
+            return Ok(await _context.Products.ToListAsync());
+        }
     }
 }
