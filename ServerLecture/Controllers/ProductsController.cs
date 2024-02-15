@@ -95,11 +95,46 @@ namespace ServerLecture.Controllers
             return Ok("Database seeded");
         }
     
-        // Get all producs
+        // Get all products
         [HttpGet("")]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts() {
             
             return Ok(await _context.Products.ToListAsync());
         }
+
+        // Delete a product
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id){
+            // Get the product with the given Id
+            Product product = await _context.Products.FindAsync(id);
+
+            if(product == null){
+                return NotFound();
+            }
+
+            // If found, remove it from the database.
+            _context.Products.Remove(product);
+            // Save your changes
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProduct(int id){
+            Product product = await _context.Products.FindAsync(id);
+            if(null == product){
+                return NotFound();
+            }
+
+            return Ok(product);
+        }
+        // Create a method which will find the product by the 
+        // id passed.
+        // If the product was not found, return NotFound();
+        // Otherwise, return Ok(product);
+
+
     }
 }
