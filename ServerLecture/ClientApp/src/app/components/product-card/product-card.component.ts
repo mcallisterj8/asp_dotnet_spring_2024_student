@@ -11,8 +11,9 @@ import { Router } from '@angular/router';
   styleUrl: './product-card.component.css'
 })
 export class ProductCardComponent {
-  @Input() product: Product | null = null;
   private router = inject(Router);
+
+  @Input() product: Product | null = null;
 
   public select(product: Product): void {
     this.router.navigate([`/products/${product.productId}`]);
