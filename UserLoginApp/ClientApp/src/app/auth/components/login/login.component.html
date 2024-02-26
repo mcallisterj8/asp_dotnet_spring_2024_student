@@ -1,37 +1,40 @@
-<br />
-<div class="container light-background form-area">
-    <br />
-    <h1 class="text-3xl">Login</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" formControlName="username" placeholder="Email address" class="form-control light-background"
-                [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" />
-            <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
-                <div *ngIf="f['username'].errors['required']">Can't be empty</div>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8 p-10 bg-white shadow-md rounded-lg">
+      <h1 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Login</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+  
+        <div class="rounded-md shadow-sm -space-y-px">
+          <div>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" formControlName="username" placeholder="Email address" required
+                   class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                   [ngClass]="{ 'border-red-500': submitted && f['username'].errors }" />
+            <div *ngIf="submitted && f['username'].errors" class="text-red-500 text-xs p-1">
+              <div *ngIf="f['username'].errors['required']">Username is required</div>
             </div>
+          </div>
+          <div>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" formControlName="password" placeholder="Password" required
+                   class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                   [ngClass]="{ 'border-red-500': submitted && f['password'].errors }" />
+            <div *ngIf="submitted && f['password'].errors" class="text-red-500 text-xs p-1">
+              <div *ngIf="f['password'].errors['required']">Password is required</div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" formControlName="password" placeholder="Password" class="form-control light-background"
-                [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
-            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-                <div *ngIf="f['password'].errors['required']">Can't be empty</div>
-            </div>
+  
+        <div>
+          <button type="submit" [disabled]="loading"
+                  class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Login to your account
+          </button>
         </div>
-        <div class="form-group">
-            <br />
-            <div class="container d-flex justify-content-center">
-                <button [disabled]="loading" class="btn btn-primary w-100">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Login to your account
-                </button>
-            </div>
-            <br />
-            <div class="container d-flex justify-content-center">
-                <p>Don't have an account? <a [routerLink]="['/auth/register']" class="text-blue-600">Sign Up</a></p>
-            </div>
+  
+        <div class="text-sm text-center">
+          <p>Don't have an account? <a [routerLink]="['/auth/register']" class="font-medium text-indigo-600 hover:text-indigo-500">Sign Up</a></p>
         </div>
-    </form>
-    <br />
-</div>
+      </form>
+    </div>
+  </div>
+  
