@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { RegisterComponent } from './auth/components/register/register.component';
-import { LoginComponent } from './auth/components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TestComponent } from './components/test/test.component';

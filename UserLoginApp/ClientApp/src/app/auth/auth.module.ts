@@ -45,8 +45,6 @@ import { AuthRoutingModule } from './auth-routing.module';
      * that these can be used in the templates of components declared 
      * in other Angular modules that import this module.
      */
-    LoginComponent,
-    RegisterComponent,
   ],
   // Do not provide services that are marked as providedIn: 'root' or guards/interceptors here if aiming for loose coupling
   /**
