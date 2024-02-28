@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { EmailLoginDetails } from '../models/email-login-details';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -40,7 +40,7 @@ export class AuthService {
 
   public register(details: EmailLoginDetails): Observable<User>{
     return this._http.post<User>(`/api/auth/register`, details)
-            .pipe(map(user => {
+            .pipe(tap(user => {
               return user;
             }));
             
@@ -48,7 +48,7 @@ export class AuthService {
 
   public login(details: EmailLoginDetails): Observable<User> {    
     return this._http.post<User>(`/api/auth/login`, details)
-            .pipe(map(user => {
+            .pipe(tap(user => {
               localStorage.setItem(this._userKey, JSON.stringify(user));
               this._curUserSubject.next(user);
 
@@ -58,7 +58,7 @@ export class AuthService {
   
   public logout(): Observable<any> {
     return this._http.post<any>(`/api/auth/logout`, {})
-            .pipe(map(() => {
+            .pipe(tap(() => {
               // Remove the user from local storage
               localStorage.removeItem(this._userKey);
               // Remove the user from the BehaviorSubject
