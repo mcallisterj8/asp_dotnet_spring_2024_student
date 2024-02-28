@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   public loading:boolean = false;
   public submitted: boolean = false;
   public returnUrl: string = "";
+  public errors: string[] = [];
 
   constructor() {
     this.loginForm = this._formBuilder.group({
@@ -71,8 +72,18 @@ export class LoginComponent implements OnInit {
                 }
                 
             },
-            error => {
-                this.loading = false;
+            (errResp) => {              
+              if (errResp.error instanceof Array) {
+                // If it's an array, assume it contains error messages directly
+                this.errors = errResp.error;
+              } else if (errResp.error.message) {
+                  // If there's a message property, use it
+                  this.errors.push(errResp.error.message);
+              } else {
+                  // Fallback error message
+                  this.errors.push("An error occurred during login. Please try again.");
+              }
+              this.loading = false;
             });
     }
 

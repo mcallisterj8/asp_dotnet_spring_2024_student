@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
   public loading: boolean = false;
   public submitted: boolean = false;
   public returnUrl: string = "";
+  public errors: string[] = [];
 
   constructor() {
     this.signupForm = this._formBuilder.group({
@@ -68,16 +69,17 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data: any) => {                            
-              if(!data){                        
-                  this.loading = false;
-                  this.signupForm.reset();
-              }else{
-                  this._router.navigate([this.returnUrl]);
-              }
+            if(!data){                        
+                this.loading = false;
+                this.signupForm.reset();
+            }else{
+                this._router.navigate([this.returnUrl]);
+            }
               
           },
-          () => {
-              this.loading = false;              
+          (errResp) => {              
+              this.errors = errResp.error.errors;
+              this.loading = false;
           });
 
   }

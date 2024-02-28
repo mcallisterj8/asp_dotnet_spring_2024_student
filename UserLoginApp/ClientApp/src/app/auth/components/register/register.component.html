@@ -1,5 +1,5 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8 p-10 bg-white shadow-md rounded-lg">
+<div class="min-h-screen flex justify-center bg-gray-50 pt-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md h-3/4 w-full space-y-8 p-10 bg-white shadow-md rounded-lg">
       <h1 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Register</h1>
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
   
@@ -38,6 +38,12 @@
                   class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Create an account
           </button>
+          <div *ngIf="errors.length > 0" class="text-red-500 text-sm mt-1 p-1">
+            <ul>
+                <li *ngFor="let error of errors">{{ error }}</li>
+            </ul>
+        </div>
+        
         </div>
   
         <div class="text-sm text-center">

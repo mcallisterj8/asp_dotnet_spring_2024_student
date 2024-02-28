@@ -33,8 +33,8 @@ namespace MyApp.Namespace
             var result = await _userManager.CreateAsync(user, details.Password).ConfigureAwait(false);
 
             if(!result.Succeeded) {
-                var errors = result.Errors.Select(e => e.Description);
-                
+                var errors = result.Errors.Select(e => e.Description);                
+
                 return BadRequest(new {errors});
             }
 
@@ -53,7 +53,7 @@ namespace MyApp.Namespace
             var result = await _signInManager.PasswordSignInAsync(details.Email, details.Password, false, false)
                                                 .ConfigureAwait(false);
                         
-            if(!result.Succeeded) {                
+            if(!result.Succeeded) {                             
                 return Unauthorized();
             }
 
