@@ -57,7 +57,6 @@ export class AuthService {
   }
   
   public logout(): Observable<any> {
-    console.log("logout()");
     return this._http.post<any>(`/api/auth/logout`, {})
             .pipe(tap(() => {
               // Remove the user from local storage
