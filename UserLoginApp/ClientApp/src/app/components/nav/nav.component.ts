@@ -16,7 +16,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     // this.isLoggedIn = (this._authService.curUserVal !== null ? true : false);
-    this._authService.curUser.subscribe(res => {
+    this._authService.curUser$.subscribe(res => {
       this.isLoggedIn = (res ? true : false);
     });
   }

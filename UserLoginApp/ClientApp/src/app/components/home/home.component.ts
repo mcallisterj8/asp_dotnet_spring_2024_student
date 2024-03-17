@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // this.user = this._authService.curUserVal;
-    this.user = this._authService.curUser;
+    this.user = this._authService.curUser$;
   }
 
 }

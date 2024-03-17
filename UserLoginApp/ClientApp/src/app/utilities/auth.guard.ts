@@ -22,7 +22,7 @@ export class AuthGuard {
      * @returns 
      */
      canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        this._authService.curUser.subscribe(curUser => {
+        this._authService.curUser$.subscribe(curUser => {
           if(curUser) {
             
             // authorized so return true
