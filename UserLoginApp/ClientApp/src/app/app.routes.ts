@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TestComponent } from './components/test/test.component';
-import { AuthGuard } from './utilities/auth.guard';
+import { AuthGuard } from './auth/utilities/auth.guard';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },    
