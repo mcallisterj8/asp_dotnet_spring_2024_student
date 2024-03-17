@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using UserLoginApp.Models;
 using System.Text.Json;
 
-namespace UserLoginApp.Controllers
+namespace UserLoginApp.Namespace
 {
     [Authorize]
     [Route("api/[controller]")]

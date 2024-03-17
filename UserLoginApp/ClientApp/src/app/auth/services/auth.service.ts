@@ -17,7 +17,7 @@ export class AuthService {
   // BehaviorSubject for storing the logged in user
   private _curUserSubject: BehaviorSubject<User | null>;
   // Observable which will emit changes to the logged in user to the application
-  public curUser: Observable<User | null>;
+  public curUser$: Observable<User | null>;
 
   constructor() {
     // Attempt to get the user from localStorage 
@@ -30,7 +30,7 @@ export class AuthService {
     this._curUserSubject = new BehaviorSubject<User | null>(curUserJson);
     // Emit the logged in user to the Observable so that the application can see changes in the
     // state of the user as the user performs login and logout actions.
-    this.curUser = this._curUserSubject.asObservable();
+    this.curUser$ = this._curUserSubject.asObservable();
   }
 
   // Convenient way to get the user value directly.
@@ -39,11 +39,7 @@ export class AuthService {
   }
 
   public register(details: EmailLoginDetails): Observable<User>{
-    return this._http.post<User>(`/api/auth/register`, details)
-            .pipe(tap(user => {
-              return user;
-            }));
-            
+    return this._http.post<User>(`/api/auth/register`, details);            
   }
 
   public login(details: EmailLoginDetails): Observable<User> {    
