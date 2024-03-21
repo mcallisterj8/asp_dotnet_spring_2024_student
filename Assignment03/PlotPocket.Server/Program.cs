@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PlotPocket.Server.Data;
+using PlotPocket.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,9 @@ builder.Services.AddSession(options => {
     options.Cookie.IsEssential = true;
 
 });
+
+builder.Services.AddSingleton<TMDBService>();
+builder.Services.AddSingleton<ShowService>();
 
 var app = builder.Build();
 

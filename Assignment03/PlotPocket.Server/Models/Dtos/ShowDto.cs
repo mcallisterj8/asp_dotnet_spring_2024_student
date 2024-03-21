@@ -7,7 +7,6 @@ public class ShowDto {
     public string Type { get; set; }
     public string Title { get; set; }
     public DateTime? Date { get; set; }
-    public bool IsBookmarked { get; set; } = false;
     public string PosterPath { get; set; }    
 
 }
