@@ -37,9 +37,9 @@ public class TMDBService {
                 the JSON that we receive back (stored in the response's Content property) is of type TrendingResponse that
                 have defined based on this structure we get back from the API.
             */
-        TrendingResponse? trendingRespResp = JsonSerializer.Deserialize<TrendingResponse>(response.Content);
+        TrendingResponse? trendingResp = JsonSerializer.Deserialize<TrendingResponse>(response.Content);
 
-        return trendingRespResp ?? new TrendingResponse { Results = new List<Trending>() };
+        return trendingResp ?? new TrendingResponse { Results = new List<Trending>() };
 	}
 	
 	/**
