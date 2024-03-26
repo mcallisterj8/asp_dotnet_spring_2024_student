@@ -44,12 +44,13 @@
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
     >
-      <!-- <div
+      <div
         *ngFor="let show of trendingList$ | async"
         class="flex flex-col w-full"
       >
-        <app-show-card [show]="show"></app-show-card>
-      </div> -->
+      <div>{{show.title}}</div>
+        <!-- <app-show-card [show]="show"></app-show-card> -->
+      </div>
     </div>
   </div>
 </div>
