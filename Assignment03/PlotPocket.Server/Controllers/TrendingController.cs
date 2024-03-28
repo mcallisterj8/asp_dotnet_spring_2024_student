@@ -15,7 +15,7 @@ namespace PlotPocket.Server.Controllers
         public TrendingController(TMDBService tmdbService, ShowService showService) {
             _tmdbService = tmdbService;
             _showService = showService;
-        }
+        }    
 
         [HttpGet("")]
         public async Task<ActionResult<IEnumerable<ShowDto>>> GetTrendingShows(){

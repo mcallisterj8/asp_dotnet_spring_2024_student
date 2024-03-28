@@ -21,4 +21,9 @@ export class TrendingService {
     });
   }
 
+  // public getAllTrending(): Observable<Show[]> {
+    
+  //   return this._http.get<Show[]>(`/api/trending`);      
+  // }
+
 }
