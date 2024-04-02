@@ -18,10 +18,8 @@ export class TrendingListComponent implements OnInit {
     'allTrending';
 
     ngOnInit(): void {
-      console.log("before");
       this.getAllTrending();
 
-      console.log("after");
     }
 
     public getAllTrending(): void {
@@ -32,10 +30,10 @@ export class TrendingListComponent implements OnInit {
     }
 
     public getTrendingMovies(): void {
-
+      this.currentFilter = 'trendingMovies';
     }
 
     public getTrendingTvShows(): void {
-      
+      this.currentFilter = 'trendingTvShows';
     }
 }
