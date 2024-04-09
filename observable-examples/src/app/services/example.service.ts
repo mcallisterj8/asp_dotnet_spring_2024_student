@@ -22,9 +22,10 @@ export class ExampleService {
         // return retVal;
       }),
       map((val) => {
+        
         console.log('---------------------------------');
         console.log('map initial:', val);
-        const retVal = val * 2;
+        const retVal = val + 2;
         console.log('map retVal:', retVal);
 
         return retVal;
@@ -32,6 +33,7 @@ export class ExampleService {
       filter((val) => {
         console.log('---------------------------------');
         console.log('filter initial:', val);
+        console.log('=================================');
         console.log('=================================');
         return val % 2 == 0;
       })
